@@ -1,0 +1,41 @@
+/* One fixed native 640 × 600 frame for every onboarding step. */
+.welcomeShade{position:fixed;inset:0;z-index:300;background:var(--surface);padding:60px 40px 32px;overflow:hidden;isolation:isolate}
+.welcomeAmbient{position:absolute;z-index:-1}.welcomeAmbient .ambientCoordinates{transform:scale(.6);left:50%;margin-left:-420px}.welcomeAmbient .lightRed{opacity:.7}.welcomeAmbient .lightViolet{opacity:.8}.welcomeAmbient .ambientDots{left:100px;top:470px;opacity:.32}
+.welcomeCard{position:relative;width:100%;height:100%;margin:0 auto;background:transparent;display:flex;flex-direction:column}
+.welcomeHeader{display:flex;justify-content:space-between;align-items:center;height:36px;flex:none}.welcomeBrand{display:flex;align-items:center;gap:8px}.welcomeBrand svg{width:26px;height:26px;color:var(--accent)}.welcomeBrand strong{font-size:17px;font-weight:500}.welcomeProgress{font-size:var(--text-note);color:var(--ink-note)}
+.welcomeCard h2{font-size:var(--text-welcome);font-weight:400;line-height:1.4;letter-spacing:-.025em;text-align:center;margin:0}
+.welcomeActions{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}.welcomeActions .primary{min-width:116px;height:40px}.welcomeActions .skipStep{font-size:var(--text-xs);line-height:20px;color:var(--ink-tertiary);padding:0 8px}
+.brandWelcome{flex:1;position:relative;padding-top:0}.step-0 .welcomeHeader{visibility:hidden;height:0}
+.brandWelcome .welcomeActions{position:absolute;bottom:8px;left:0;right:0}
+.nameStep{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:104px}.nameStepContent{text-align:center;width:100%;transform:translateY(-4px)}
+.underlineInput{display:block;height:48px;border:0;border-bottom:1px solid #d3cedd;border-radius:0;background:transparent;padding:10px 0;box-shadow:none;font-size:var(--text-input)}.underlineInput:focus,.underlineInput:focus-visible{border-color:#a195b8;outline:none;box-shadow:none}.nameInput{width:320px;max-width:100%;height:60px;text-align:center;margin:32px auto 0;padding:12px 0;font:300 24px/36px var(--font-ui)}.nameInput::placeholder{color:#9d98ac;font-weight:300}
+.nameStep .welcomeActions,.apiStep .welcomeActions{position:absolute;left:0;right:0;bottom:8px}.apiStep{position:relative;flex:1;padding-top:36px}.onboardFields{width:420px;max-width:100%;margin:28px auto 0}.onboardFields label{display:block;font-size:var(--text-xs);line-height:18px;color:var(--ink-secondary);margin:0}.onboardFields label:not(:first-child){margin-top:24px}.onboardFields input{font-size:14px}.onboardFields small{display:block;font-size:var(--text-note);line-height:16px;color:var(--ink-note);margin-top:12px}.welcomeCard .fieldError{font-size:var(--text-xs);margin-top:12px}
+.exampleStep{flex:1;padding-top:20px;min-height:0}.exampleStep h2{font-size:26px;margin-bottom:16px}.embeddedCapture{padding:0;background:transparent;min-height:0;height:auto}.embeddedCapture .captureHeader{display:none}.embeddedCapture .captureImage{margin:0 0 16px}.embeddedCapture .captureImageVisual,.embeddedCapture .captureImage.expanded .captureImageVisual,.embeddedCapture .captureImage.scanning .captureImageVisual{width:100%;height:238px;border-radius:16px}.embeddedCapture .imagePreview{background:#f8f8fb}.embeddedCapture .imagePreview img{object-fit:contain}.embeddedCapture .imageAction{font-size:12px;padding:7px 12px;color:var(--accent-strong)}.exampleBack{display:flex;align-items:center;justify-content:space-between;margin-top:16px;font-size:var(--text-note);color:var(--ink-note)}.exampleBack button{display:flex;align-items:center;gap:6px;color:var(--ink-tertiary);min-height:28px;font-size:var(--text-xs)}
+/* Alternative layout is a review variant of these same components, not separate code. */
+html[data-onboarding-layout=left] .welcomeCard h2{text-align:left}html[data-onboarding-layout=left] .welcomeActions{align-items:flex-end}html[data-onboarding-layout=left] .nameStepContent{text-align:left}html[data-onboarding-layout=left] .nameInput{margin-left:0;text-align:left}html[data-onboarding-layout=left] .onboardFields{margin-left:0;width:100%}
+/* The breathing seed is already present in index.html before JavaScript runs. */
+.applicationReveal{width:100%;height:100%}.applicationReveal.waiting{visibility:hidden;pointer-events:none}.applicationReveal.opening{animation:windowUnfold .7s cubic-bezier(.16,1,.3,1) both;pointer-events:none}.launchSurface{position:fixed;inset:0;z-index:900;display:grid;place-items:center;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,#f0ebf9,#faf9fc 54%,#fff)}.launchSeed{display:block;width:12px;height:12px;border-radius:50%;background:#9686bd;box-shadow:0 0 24px #b7a3d537;animation:seedBreath 1.3s ease-in-out infinite}.launchSurface.opening{animation:launchFade .32s ease-out forwards}.launchSurface.opening .launchSeed{animation:seedRelease .3s ease-out forwards}
+.startupError{padding:80px 40px;text-align:center}.startupError h1{font-size:22px}.startupError p{color:var(--ink-secondary);font-size:13px;margin:16px 0}.startupError button{color:var(--accent-strong);padding:10px 20px}
+@keyframes seedBreath{50%{transform:scale(1.32);opacity:.5;box-shadow:0 0 36px #b7a3d55c}}
+@keyframes seedRelease{to{transform:scale(2);opacity:0}}
+@keyframes launchFade{to{opacity:0}}
+@keyframes windowUnfold{from{clip-path:circle(6px at 50% 50%);opacity:.9}to{clip-path:circle(80vmax at 50% 50%);opacity:1}}
+
+@media(prefers-reduced-motion:reduce){.applicationReveal.opening{clip-path:none;pointer-events:auto}.launchSurface.opening{display:none}}
+/* One wordmark, at two optical sizes, across every first-run step. */
+@font-face{font-family:Outfit;src:url('./assets/brand/OutfitVariable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+.welcomeShade{padding-top:48px}
+.brandLockup{display:flex;align-items:center;color:var(--accent);width:max-content;gap:5px}
+.brandLockup svg{display:block;width:22px;height:22px;flex:none}
+.brandLockup strong{font:600 24px/1 Outfit,sans-serif;letter-spacing:-.045em}
+.brandLarge{margin:2px auto 22px;gap:7px}.brandLarge svg{width:34px;height:34px}.brandLarge strong{font-size:37px}
+.brandWelcome h2{font-size:28px;line-height:40px;letter-spacing:-.03em}
+.exampleStep{padding-top:38px}.exampleStep h2{margin-bottom:24px}
+.embeddedCapture .emptyState{height:238px;min-height:238px;max-height:238px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 0 16px;padding:22px 20px;gap:0}
+.embeddedCapture .emptyState h1{font-size:19px;line-height:28px;margin:14px 0 6px}
+.embeddedCapture .emptyState p{font-size:12px;line-height:20px;margin:0;color:var(--ink-tertiary)}
+.embeddedCapture .useExample{display:flex;align-items:center;gap:6px;min-height:28px;margin-top:14px;font-size:12px;color:var(--accent-strong)}
+.embeddedCapture .titleActionRow{flex:none}
+html[data-onboarding-layout=left] .brandLarge{margin-left:0}
+/* The last step uses its lower space to teach the next real action. */
+.exampleStep{display:flex;flex-direction:column;padding-top:36px}.exampleStep h2{flex:none;margin-bottom:20px}.exampleBack{margin-top:12px;flex:none}.exampleStep>.embeddedCapture{flex:none}.onboardingShortcutHint{display:flex;align-items:center;justify-content:center;gap:7px;min-height:32px;margin-top:auto;padding-top:12px;color:var(--ink-secondary);font-size:12px;line-height:20px;flex:none}.shortcutKeys{display:inline-flex;align-items:center;gap:4px}.shortcutKeys kbd{display:inline-block;padding:1px 6px;border:1px solid #e4dfed;border-radius:6px;background:#ffffff80;color:var(--accent-strong);font:500 11px/18px var(--font-ui)}.shortcutKeys .keyPlus{font-size:10px;color:var(--ink-note)}

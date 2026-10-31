@@ -1,0 +1,14 @@
+node_modules/
+release/
+mac/ui/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+*.secure
+*.secure.tmp
+local-memory.json
+data/
+.npm-task-cache/
+.playwright-cli/

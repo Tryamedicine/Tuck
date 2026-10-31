@@ -1,0 +1,55 @@
+{
+  "name": "shouxia",
+  "version": "0.1.30-preview.1",
+  "private": true,
+  "description": "Tuck · 今日排序与首次收下，基于 0.1.25-preview.1",
+  "author": "Shouxia",
+  "main": "mac/main.cjs",
+  "scripts": {
+    "build:mac-ui": "node mac/build.cjs",
+    "start:mac": "npm run build:mac-ui && electron .",
+    "test:mac": "node --test mac/*.test.cjs",
+    "pack:mac": "npm run build:mac-ui && electron-builder --mac dir dmg --arm64"
+  },
+  "build": {
+    "appId": "local.tuck.design-review",
+    "productName": "Tuck Review",
+    "directories": {
+      "output": "../release"
+    },
+    "files": [
+      "mac/main.cjs",
+      "mac/preload.cjs",
+      "mac/store.cjs",
+      "mac/ui/**",
+      "package.json",
+      "mac/assets/trayTemplate.png",
+      "mac/receipt.cjs",
+      "mac/shortcut-format.cjs"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.productivity",
+      "identity": null,
+      "target": [
+        "dir",
+        "dmg"
+      ],
+      "icon": "mac/assets/Tuck.icns"
+    },
+    "dmg": {
+      "title": "Tuck · 设计细节审阅",
+      "sign": false
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.0.0",
+    "electron-builder": "^26.0.12",
+    "playwright": "^1.64.1",
+    "esbuild": "^0.28.2",
+    "motion": "^14.5.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.186.1"
+  }
+}
